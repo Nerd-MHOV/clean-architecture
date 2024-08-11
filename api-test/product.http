@@ -1,0 +1,11 @@
+###
+GET http://127.0.0.1:3333/products
+
+###
+POST http://localhost:3333/products
+Content-Type: application/json
+
+{
+    "name": "fist product",
+    "price": 987.90
+}
