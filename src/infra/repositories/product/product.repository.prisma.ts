@@ -37,4 +37,26 @@ export class ProductRepositoryPrisma implements ProductGateway {
         return productList
     }
     
+    public async update(product: Product): Promise<void> {
+        const data = {
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            quantity: product.quantity,
+        }
+
+        await this.prismaClient.product.update({
+            where: { id: product.id },
+            data
+        })
+    }
+
+    public async find(id: string): Promise<Product | null> {
+        const aProduct = await this.prismaClient.product.findUnique({
+            where: { id }
+        })
+        if( !aProduct ) return null;
+        const product = Product.with(aProduct);
+        return product;
+    }
 }

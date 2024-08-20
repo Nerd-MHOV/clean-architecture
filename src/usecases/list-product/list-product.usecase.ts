@@ -21,13 +21,8 @@ export class ListProductUsecase
         }
 
         public async execute(): Promise<ListProductOutputDto> {
-            
             const aProduct = await this.productGateway.list();
-            const output = this.presentOutput(aProduct);
-
-
-            return output;
-
+            return this.presentOutput(aProduct);
         }
 
         private presentOutput(products: Product[]): ListProductOutputDto {

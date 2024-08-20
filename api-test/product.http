@@ -9,3 +9,19 @@ Content-Type: application/json
     "name": "fist product",
     "price": 987.90
 }
+
+###
+POST http://localhost:3333/products/fe3a582c-4a2e-4330-8d8c-9864ed4cc5b9/buy
+Content-Type: application/json
+
+{
+    "amount": 100
+}
+
+###
+POST http://localhost:3333/products/fe3a582c-4a2e-4330-8d8c-9864ed4cc5b9/sell
+Content-Type: application/json
+
+{
+    "amount": 20
+}

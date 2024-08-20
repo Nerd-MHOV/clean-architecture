@@ -49,7 +49,10 @@ export class Product {
         this.props.quantity += quantity;
     }
 
-    public decreaseQuantity(quantity: number) {
+    public sell(quantity: number) {
+        if(this.quantity < quantity) {
+            throw new Error('Not enough stock')
+        }
         this.props.quantity -= quantity;
     }
 }

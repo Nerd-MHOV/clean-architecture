@@ -7,12 +7,12 @@ export type CreateProductResponseDto = {
 }
 
 export class CreateProductRoute implements Route {
-     
+
     private constructor(
         private readonly path: string,
         private readonly method: HttpMethod,
         private readonly createProductService: CreateProductUsecase
-    ) {}
+    ) { }
 
     public static create(createProductService: CreateProductUsecase) {
         return new CreateProductRoute(
@@ -21,11 +21,11 @@ export class CreateProductRoute implements Route {
             createProductService
         )
     }
-     
+ 
     public getHandler() {
         return async (request: Request, response: Response) => {
             const { name, price } = request.body;
-            const input: CreateProductInputDto = { name, price}
+            const input: CreateProductInputDto = { name, price }
             const output: CreateProductOutputDto =
                 await this.createProductService.execute(input);
             const responseBody = this.present(output);
@@ -47,5 +47,5 @@ export class CreateProductRoute implements Route {
         return response;
     }
 
-     
+
 }

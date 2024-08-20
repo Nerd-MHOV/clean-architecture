@@ -1,5 +1,5 @@
 import { Response, Request } from "express";
-import { ListProductInputDto, ListProductOutputDto, ListProductUsecase } from "../../../../usecases/list-product/list-product.usecase";
+import { ListProductOutputDto, ListProductUsecase } from "../../../../usecases/list-product/list-product.usecase";
 import { HttpMethod, Route } from "./route";
 
 export type ListProductResponseDto = {
@@ -7,6 +7,7 @@ export type ListProductResponseDto = {
         id: string,
         name: string,
         price: number,
+        quantity: number,
     }[];
 }
 
@@ -46,7 +47,8 @@ export class ListProductRoute implements Route {
             products: input.products.map( p => ({
                 id: p.id,
                 name: p.name,
-                price: p.price 
+                price: p.price,
+                quantity: p.quantity 
             }))
         }
 
